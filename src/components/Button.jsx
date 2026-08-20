@@ -1,31 +1,22 @@
 import React from 'react';
+import styles from './Button.module.css';
 
-const Button = ({ variant, size, children, disabled, loading, icon }) => {
-  const baseClasses = 'rounded-full border-2 border-on-surface hard-shadow-sm neubrutal-hover font-label uppercase transition-all';
-  const variantClasses = {
-    primary: 'bg-primary-container text-on-primary-container',
-    secondary: 'bg-surface-bright text-on-surface',
-    ghost: 'bg-transparent text-on-surface border-transparent hover:border-on-surface',
-    disabled: 'bg-disabled text-disabled-content border-disabled',
-  };
-  const sizeClasses = {
-    large: 'px-12 py-6',
-    medium: 'px-8 py-4',
-    small: 'px-6 py-2',
-  };
-
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
+const Button = ({ variant = 'primary', disabled = false, loading = false, onClick, children }) => {
+  const buttonClasses = [
+    styles.button,
+    styles[variant],
+    disabled ? styles.disabled : '',
+    loading ? styles.loading : '',
+  ].join(' ');
 
   return (
-    <button className={classes} disabled={disabled || loading}>
-      {loading ? (
-        <span className="material-symbols-outlined animate-spin">progress_activity</span>
-      ) : (
-        <>
-          {icon && <span className="material-symbols-outlined mr-2">{icon}</span>}
-          {children}
-        </>
-      )}
+    <button
+      className={buttonClasses}
+      disabled={disabled || loading}
+      onClick={onClick}
+    >
+      {loading && <span className={styles.spinner} />}
+      {children}
     </button>
   );
 };

@@ -1,91 +1,111 @@
 import React from 'react';
 import Button from '../components/Button';
+import styles from './ButtonShowcaseMobile.module.css';
 
-const buttonVariants = [
-  {
-    label: 'PRIMARY (LIME)',
-    bgColor: 'bg-primary-fixed',
-    textColor: 'text-on-primary-fixed',
-    text: 'Confirm Action',
-    description: 'Used for main calls to action.'
-  },
-  {
-    label: 'SECONDARY (WHITE)',
-    bgColor: 'bg-surface-container-lowest',
-    textColor: 'text-on-surface',
-    text: 'Cancel Action',
-    description: 'Used for alternative options.'
-  },
-  {
-    label: 'GHOST (OUTLINE)',
-    bgColor: 'bg-transparent',
-    textColor: 'text-on-surface',
-    text: 'Learn More',
-    description: 'Low emphasis tertiary actions.'
-  }
-];
+const ButtonShowcaseMobile = () => {
+  const buttonVariants = [
+    {
+      id: 1,
+      title: 'PRIMARY (LIME)',
+      variant: 'primary',
+      text: 'Confirm Action',
+      description: 'Used for main calls to action.'
+    },
+    {
+      id: 2,
+      title: 'SECONDARY (WHITE)',
+      variant: 'secondary',
+      text: 'Cancel Action',
+      description: 'Used for alternative options.'
+    },
+    {
+      id: 3,
+      title: 'GHOST (OUTLINE)',
+      variant: 'ghost',
+      text: 'Learn More',
+      description: 'Low emphasis tertiary actions.'
+    }
+  ];
 
-const buttonSizes = [
-  {
-    size: 'Large',
-    height: 'HEIGHT: 64PX',
-    className: 'px-12 py-6 text-lg'
-  },
-  {
-    size: 'Medium',
-    height: 'HEIGHT: 48PX',
-    className: 'px-8 py-4'
-  },
-  {
-    size: 'Small',
-    height: 'HEIGHT: 32PX',
-    className: 'px-6 py-2 text-xs'
-  }
-];
+  const buttonSizes = [
+    {
+      id: 1,
+      size: 'large',
+      text: 'Large Button',
+      height: 'HEIGHT: 64PX'
+    },
+    {
+      id: 2,
+      size: 'medium',
+      text: 'Medium Button',
+      height: 'HEIGHT: 48PX'
+    },
+    {
+      id: 3,
+      size: 'small',
+      text: 'Small Button',
+      height: 'HEIGHT: 32PX'
+    }
+  ];
 
-const functionalColors = [
-  {
-    bgColor: 'bg-[#a3d741]',
-    textColor: 'text-on-primary-fixed',
-    icon: 'check_circle',
-    text: 'Success'
-  },
-  {
-    bgColor: 'bg-tertiary-fixed',
-    textColor: 'text-on-tertiary-fixed',
-    icon: 'warning',
-    text: 'Warning'
-  },
-  {
-    bgColor: 'bg-error',
-    textColor: 'text-on-error',
-    icon: 'delete_forever',
-    text: 'Error Action'
-  }
-];
+  const functionalColors = [
+    {
+      id: 1,
+      color: 'success',
+      text: 'Success',
+      icon: 'check_circle'
+    },
+    {
+      id: 2,
+      color: 'warning',
+      text: 'Warning',
+      icon: 'warning'
+    },
+    {
+      id: 3,
+      color: 'error',
+      text: 'Error Action',
+      icon: 'delete_forever'
+    }
+  ];
 
-const iconButtons = [
-  { icon: 'add', bgColor: 'bg-primary-container' },
-  { icon: 'settings', bgColor: 'bg-surface-container-lowest' },
-  { icon: 'favorite', bgColor: 'bg-error-container' }
-];
+  const iconButtons = [
+    {
+      id: 1,
+      icon: 'add',
+      variant: 'primary'
+    },
+    {
+      id: 2,
+      icon: 'settings',
+      variant: 'secondary'
+    },
+    {
+      id: 3,
+      icon: 'delete_forever',
+      variant: 'error'
+    }
+  ];
 
-export default function ButtonShowcaseMobile() {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin py-4 bg-background border-b-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <div className={styles.container}>
+      <header className={styles.header}>
         <div className="flex items-center gap-4">
-          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">arrow_back</button>
-          <h1 className="font-display text-display uppercase text-on-surface tracking-tighter">BUTTONS</h1>
+          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+            arrow_back
+          </button>
+          <h1 className={styles.headerTitle}>BUTTONS</h1>
         </div>
         <div className="flex items-center">
-          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">settings</button>
+          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+            settings
+          </button>
         </div>
       </header>
 
-      <main className="max-w-[1024px] mx-auto pt-32 px-4 space-y-16">
-        <section className="space-y-4">
-          <div className="bg-primary-container p-card-padding border-2 border-on-surface neubrutal-shadow rounded-xl">
+      <main>
+        <section className={styles.section}>
+          <div className={styles.card}>
             <h2 className="font-headline-lg text-headline-lg uppercase mb-4">The Interaction Language</h2>
             <p className="font-body-lg text-body-lg text-on-primary-container max-w-2xl">
               Our buttons are built to feel tactile, physical, and immediate. Using high-contrast borders and solid shadows, they anchor the UI in a cardboard-like physical space.
@@ -93,83 +113,78 @@ export default function ButtonShowcaseMobile() {
           </div>
         </section>
 
-        <section className="space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary text-on-primary w-10 h-10 rounded-full border-2 border-on-surface flex items-center justify-center font-bold">1</div>
-            <h3 className="font-headline-md text-headline-md uppercase">Button Variants</h3>
+        <section className={styles.section}>
+          <div className={styles.sectionTitleContainer}>
+            <div className={styles.sectionNumber}>1</div>
+            <h3 className={styles.sectionTitle}>Button Variants</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {buttonVariants.map((variant, index) => (
-              <div key={index} className="bg-surface-container border-2 border-on-surface p-6 rounded-xl neubrutal-shadow">
-                <p className="font-label text-label mb-6 text-outline">{variant.label}</p>
+          <div className={styles.buttonGrid}>
+            {buttonVariants.map((variant) => (
+              <div key={variant.id} className={styles.buttonContainer}>
+                <p className={styles.cardTitle}>{variant.title}</p>
                 <Button
-                  className={`w-full btn-base ${variant.bgColor} ${variant.textColor} uppercase py-4 rounded-full neubrutal-shadow`}
-                  onClick={() => {}}
-                >
-                  {variant.text}
-                </Button>
-                <p className="mt-4 font-body-sm text-body-sm italic">{variant.description}</p>
+                  variant={variant.variant}
+                  text={variant.text}
+                  fullWidth
+                />
+                <p className={styles.buttonDescription}>{variant.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary text-on-primary w-10 h-10 rounded-full border-2 border-on-surface flex items-center justify-center font-bold">2</div>
-            <h3 className="font-headline-md text-headline-md uppercase">Button Sizes</h3>
+        <section className={styles.section}>
+          <div className={styles.sectionTitleContainer}>
+            <div className={styles.sectionNumber}>2</div>
+            <h3 className={styles.sectionTitle}>Button Sizes</h3>
           </div>
-          <div className="bg-surface-2 border-2 border-on-surface p-card-padding rounded-xl neubrutal-shadow flex flex-wrap items-end gap-12">
-            {buttonSizes.map((size, index) => (
-              <div key={index} className="flex flex-col items-center gap-4">
+          <div className={styles.sizeContainer}>
+            {buttonSizes.map((size) => (
+              <div key={size.id} className={styles.sizeItem}>
                 <Button
-                  className={`btn-base bg-primary-fixed text-on-primary-fixed uppercase rounded-full neubrutal-shadow ${size.className}`}
-                  onClick={() => {}}
-                >
-                  {size.size} Button
-                </Button>
-                <span className="font-label text-label text-outline">{size.height}</span>
+                  variant="primary"
+                  text={size.text}
+                  size={size.size}
+                />
+                <span className={styles.sizeLabel}>{size.height}</span>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary text-on-primary w-10 h-10 rounded-full border-2 border-on-surface flex items-center justify-center font-bold">3</div>
-            <h3 className="font-headline-md text-headline-md uppercase">Functional Colors</h3>
+        <section className={styles.section}>
+          <div className={styles.sectionTitleContainer}>
+            <div className={styles.sectionNumber}>3</div>
+            <h3 className={styles.sectionTitle}>Functional Colors</h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {functionalColors.map((color, index) => (
+          <div className={styles.functionalGrid}>
+            {functionalColors.map((color) => (
               <Button
-                key={index}
-                className={`btn-base ${color.bgColor} ${color.textColor} uppercase py-4 px-6 rounded-lg neubrutal-shadow flex gap-2`}
-                onClick={() => {}}
-              >
-                <span className="material-symbols-outlined">{color.icon}</span>
-                {color.text}
-              </Button>
+                key={color.id}
+                variant={color.color}
+                text={color.text}
+                icon={color.icon}
+              />
             ))}
           </div>
         </section>
 
-        <section className="space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="bg-primary text-on-primary w-10 h-10 rounded-full border-2 border-on-surface flex items-center justify-center font-bold">4</div>
-            <h3 className="font-headline-md text-headline-md uppercase">Icon Buttons</h3>
+        <section className={styles.section}>
+          <div className={styles.sectionTitleContainer}>
+            <div className={styles.sectionNumber}>4</div>
+            <h3 className={styles.sectionTitle}>Icon Buttons</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-surface-container border-2 border-on-surface p-8 rounded-xl neubrutal-shadow flex flex-col items-center gap-6">
-              <p className="font-label text-label uppercase">Circular Profiles</p>
-              <div className="flex gap-6">
-                {iconButtons.map((button, index) => (
+          <div className={styles.iconGrid}>
+            <div className={styles.iconCard}>
+              <p className={styles.iconCardTitle}>Circular Profiles</p>
+              <div className={styles.iconButtonContainer}>
+                {iconButtons.map((button) => (
                   <Button
-                    key={index}
-                    className={`w-16 h-16 btn-base rounded-full ${button.bgColor} neubrutal-shadow`}
-                    onClick={() => {}}
-                  >
-                    <span className="material-symbols-outlined text-3xl">{button.icon}</span>
-                  </Button>
+                    key={button.id}
+                    variant={button.variant}
+                    icon={button.icon}
+                    circular
+                  />
                 ))}
               </div>
             </div>
@@ -178,4 +193,6 @@ export default function ButtonShowcaseMobile() {
       </main>
     </div>
   );
-}
+};
+
+export default ButtonShowcaseMobile;

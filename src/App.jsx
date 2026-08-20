@@ -4,18 +4,18 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import OnboardingStepsWebViewFixedTokens from './pages/OnboardingStepsWebViewFixedTokens';
+import ButtonShowcaseWebView from './pages/ButtonShowcaseWebView';
 import OnboardingStepsWidget from './pages/OnboardingStepsWidget';
 import ButtonShowcaseMobile from './pages/ButtonShowcaseMobile';
-import ButtonShowcaseWebViewFinal from './pages/ButtonShowcaseWebViewFinal';
+import OnboardingWebView from './pages/OnboardingWebView';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
-    { path: '/', label: 'OnboardingStepsWebViewFixedTokens' },
+    { path: '/', label: 'ButtonShowcaseWebView' },
     { path: '/onboardingstepswidget', label: 'OnboardingStepsWidget' },
     { path: '/buttonshowcasemobile', label: 'ButtonShowcaseMobile' },
-    { path: '/buttonshowcasewebviewfinal', label: 'ButtonShowcaseWebViewFinal' }
+    { path: '/onboardingwebview', label: 'OnboardingWebView' }
   ];
 
   return (
@@ -51,11 +51,11 @@ export default function App() {
               <ScreenBar />
               <div className="pt-10 min-h-screen">
                 <Routes>
-                  <Route path='/' element={<OnboardingStepsWebViewFixedTokens />} />
+                  <Route path='/' element={<ButtonShowcaseWebView />} />
         <Route path='/onboardingstepswidget' element={<OnboardingStepsWidget />} />
         <Route path='/buttonshowcasemobile' element={<ButtonShowcaseMobile />} />
-        <Route path='/buttonshowcasewebviewfinal' element={<ButtonShowcaseWebViewFinal />} />
-                  <Route path="*" element={<OnboardingStepsWebViewFixedTokens />} />
+        <Route path='/onboardingwebview' element={<OnboardingWebView />} />
+                  <Route path="*" element={<ButtonShowcaseWebView />} />
                 </Routes>
               </div>
             </BrowserRouter>

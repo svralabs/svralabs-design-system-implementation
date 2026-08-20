@@ -1,9 +1,21 @@
 import React from 'react';
-export default function Card({ children, className = '', title, subtitle, ...props }) {
+
+export default function Card({ children, padding = 'md', elevation = 'md' }) {
+  const paddingMap = {
+    sm: 'p-4',
+    md: 'p-6',
+    lg: 'p-8',
+  };
+
+  const elevationMap = {
+    sm: 'shadow-sm',
+    md: 'shadow-md',
+    lg: 'shadow-lg',
+    xl: 'shadow-xl',
+  };
+
   return (
-    <div className={`bg-white dark:bg-[#1e1e24] rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 ${className}`} {...props}>
-      {title && <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-1">{title}</h3>}
-      {subtitle && <p className="text-sm text-slate-500 mb-4">{subtitle}</p>}
+    <div className={`bg-surface rounded-lg ${paddingMap[padding]} ${elevationMap[elevation]}`}>
       {children}
     </div>
   );

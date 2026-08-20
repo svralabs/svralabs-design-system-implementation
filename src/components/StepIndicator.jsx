@@ -1,13 +1,23 @@
 import React from 'react';
+import styles from '../pages/OnboardingStepsWidget.module.css';
 
-export default function StepIndicator({ stepNumber, isActive }) {
-  const baseClasses = "w-12 h-12 border-2 border-on-background rounded-full flex items-center justify-center font-headline-sm text-headline-sm neubrutalism-shadow-sm";
-  const activeClasses = "bg-primary-fixed";
-  const inactiveClasses = "bg-surface-container-highest";
-
+export default function StepIndicator({ currentStep, totalSteps, labels }) {
   return (
-    <div className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}>
-      {stepNumber}
+    <div className={styles.stepIndicatorContainer}>
+      {Array.from({ length: totalSteps }).map((_, index) => (
+        <div key={index} className={styles.stepItem}>
+          <div
+            className={`${styles.stepCircle} ${
+              index + 1 === currentStep ? styles.activeStep : ''
+            }`}
+          >
+            {index + 1}
+          </div>
+          {labels && labels[index] && (
+            <span className={styles.stepLabel}>{labels[index]}</span>
+          )}
+        </div>
+      ))}
     </div>
   );
 }

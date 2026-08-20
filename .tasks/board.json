@@ -1,23 +1,24 @@
 {
   "project_name": "svralabs-design-system-implementation",
-  "architecture_summary": "Modular React app. Pages map 1:1 to Stitch screens. Shared UI components extracted from common patterns. Tailwind CSS for styling. React Router for navigation. No state management library (use React context for global state).",
+  "architecture_summary": "Modular React app. Pages in src/pages/. Reusable UI components in src/components/. CSS modules for styling. React Router v6 for navigation. No state management lib (use React context for shared state).",
   "tickets": [
     {
       "id": "TASK-001",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create OnboardingStepsWidget page component",
+      "title": "Onboarding steps widget page (src/pages/OnboardingStepsWidget.jsx)",
       "source_screen": "onboarding_steps_widget",
-      "description": "Convert Stitch onboarding_steps_widget screen to React component. Extract reusable StepIndicator component. Use Tailwind for layout and spacing. Match design pixel-perfect.",
+      "description": "Convert Stitch onboarding_steps_widget screen to React. Extract reusable StepIndicator component. Use CSS modules for styling. Match design pixel-perfect.",
       "target_files": [
         "src/pages/OnboardingStepsWidget.jsx",
-        "src/components/StepIndicator.jsx"
+        "src/components/StepIndicator.jsx",
+        "src/pages/OnboardingStepsWidget.module.css"
       ],
       "acceptance_criteria": [
-        "Component renders without errors",
-        "StepIndicator reusable across pages",
-        "Tailwind classes match Stitch spacing, colors, typography",
-        "Responsive behavior preserved"
+        "Page render without errors",
+        "StepIndicator component reusable, accept props: currentStep, totalSteps, labels",
+        "Styling match Stitch design (colors, spacing, typography)",
+        "Responsive layout (mobile-first)"
       ],
       "status": "DONE"
     },
@@ -25,18 +26,19 @@
       "id": "TASK-002",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create OnboardingStepsWebViewFixedTokens page component",
+      "title": "Onboarding web view with fixed tokens page (src/pages/OnboardingWebView.jsx)",
       "source_screen": "onboarding_steps_web_view_fixed_tokens",
-      "description": "Convert Stitch onboarding_steps_web_view_fixed_tokens screen. Reuse StepIndicator from TASK-001. Add WebView component for embedded content. Fixed token display area with copy-to-clipboard functionality.",
+      "description": "Convert Stitch onboarding_steps_web_view_fixed_tokens screen. Embed web view for token display. Extract TokenDisplay component. CSS modules for styling.",
       "target_files": [
-        "src/pages/OnboardingStepsWebViewFixedTokens.jsx",
-        "src/components/WebView.jsx"
+        "src/pages/OnboardingWebView.jsx",
+        "src/components/TokenDisplay.jsx",
+        "src/pages/OnboardingWebView.module.css"
       ],
       "acceptance_criteria": [
-        "WebView component renders embedded content",
-        "Fixed tokens display correctly",
-        "Copy-to-clipboard works (use navigator.clipboard API)",
-        "StepIndicator reused from TASK-001"
+        "Page render without errors",
+        "TokenDisplay component accept props: tokens (array of {symbol, value, icon})",
+        "Web view iframe sandboxed, src from config",
+        "Styling match Stitch design"
       ],
       "status": "DONE"
     },
@@ -44,18 +46,19 @@
       "id": "TASK-003",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create ButtonShowcaseWebViewFinal page component",
+      "title": "Button showcase web view page (src/pages/ButtonShowcaseWebView.jsx)",
       "source_screen": "button_showcase_web_view_final",
-      "description": "Convert Stitch button_showcase_web_view_final screen. Extract reusable Button component with variants (primary, secondary, disabled, loading). Showcase all button states. WebView component reused from TASK-002.",
+      "description": "Convert Stitch button_showcase_web_view_final screen. Extract reusable Button component. CSS modules for styling. Support variants: primary, secondary, disabled, loading.",
       "target_files": [
-        "src/pages/ButtonShowcaseWebViewFinal.jsx",
-        "src/components/Button.jsx"
+        "src/pages/ButtonShowcaseWebView.jsx",
+        "src/components/Button.jsx",
+        "src/components/Button.module.css"
       ],
       "acceptance_criteria": [
-        "Button component supports all variants",
-        "WebView reused from TASK-002",
-        "Showcase matches Stitch design",
-        "Button states interactive"
+        "Page render without errors",
+        "Button component accept props: variant, disabled, loading, onClick, children",
+        "Styling match Stitch design (hover, active, focus states)",
+        "Loading state show spinner, disable interaction"
       ],
       "status": "DONE"
     },
@@ -63,17 +66,19 @@
       "id": "TASK-004",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create ButtonShowcaseMobile page component",
+      "title": "Button showcase mobile page (src/pages/ButtonShowcaseMobile.jsx)",
       "source_screen": "button_showcase_mobile",
-      "description": "Convert Stitch button_showcase_mobile screen. Reuse Button component from TASK-003. Mobile-specific layout adjustments. Touch targets meet WCAG 2.1 AA (minimum 48x48px).",
+      "description": "Convert Stitch button_showcase_mobile screen. Reuse Button component from TASK-003. CSS modules for mobile-specific styling. Ensure touch targets meet WCAG 2.1 AA.",
       "target_files": [
-        "src/pages/ButtonShowcaseMobile.jsx"
+        "src/pages/ButtonShowcaseMobile.jsx",
+        "src/pages/ButtonShowcaseMobile.module.css"
       ],
       "acceptance_criteria": [
-        "Mobile layout matches Stitch",
-        "Button component reused from TASK-003",
-        "Touch targets WCAG-compliant",
-        "Responsive behavior preserved"
+        "Page render without errors",
+        "Reuse Button component from TASK-003",
+        "Styling match Stitch mobile design",
+        "Touch targets \u2265 48x48px",
+        "Responsive layout (no horizontal scroll)"
       ],
       "status": "DONE"
     },
@@ -81,18 +86,21 @@
       "id": "TASK-005",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Extract shared layout components",
+      "title": "Shared UI components and design tokens (src/components/, src/styles/)",
       "source_screen": "",
-      "description": "Identify common layout patterns across all screens. Extract Header, Footer, Container components. Ensure consistent spacing, typography, color scheme.",
+      "description": "Extract shared design tokens (colors, spacing, typography). Create shared UI components: Spinner, Card. CSS variables for theming. Document usage in README.md.",
       "target_files": [
-        "src/components/Header.jsx",
-        "src/components/Footer.jsx",
-        "src/components/Container.jsx"
+        "src/styles/tokens.css",
+        "src/components/Spinner.jsx",
+        "src/components/Card.jsx",
+        "README.md"
       ],
       "acceptance_criteria": [
-        "Components reusable across all pages",
-        "Consistent spacing, typography, colors",
-        "No layout duplication in page components"
+        "Design tokens match Stitch design system",
+        "CSS variables reusable across components",
+        "Spinner component accept props: size, color",
+        "Card component accept props: children, padding, elevation",
+        "README.md include usage examples"
       ],
       "status": "DONE"
     },
@@ -100,41 +108,23 @@
       "id": "TASK-006",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create global theme and design tokens",
-      "source_screen": "",
-      "description": "Extract design tokens from Stitch screens. Create theme.js with colors, spacing, typography, breakpoints. Tailwind config extends theme. Ensure all components use theme variables.",
-      "target_files": [
-        "src/theme.js",
-        "tailwind.config.js"
-      ],
-      "acceptance_criteria": [
-        "Theme variables match Stitch design system",
-        "Tailwind config extends theme",
-        "All components use theme variables",
-        "No hardcoded colors, spacing, or typography"
-      ],
-      "status": "DONE"
-    },
-    {
-      "id": "TASK-007",
-      "role": "frontend",
-      "model": "hermes-auto",
       "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
       "source_screen": "",
-      "description": "Create App shell. Set up React Router with routes for all pages. Add navigation bar with active state. Ensure lazy loading for pages. Error boundary at root level.",
+      "description": "Create app shell. Add navigation bar. Set up React Router v6. Routes: /onboarding-steps, /onboarding-web-view, /button-showcase-web, /button-showcase-mobile. Lazy load pages. 404 fallback.",
       "target_files": [
         "src/App.jsx",
-        "src/routes.js"
+        "src/App.module.css"
       ],
       "acceptance_criteria": [
-        "All pages accessible via routes",
-        "Navigation bar shows active page",
-        "Lazy loading implemented",
-        "Error boundary catches rendering errors"
+        "App render without errors",
+        "Navigation bar show active route",
+        "Routes lazy load pages",
+        "404 page show when route not found",
+        "Responsive layout (mobile-first)"
       ],
       "status": "DONE"
     }
   ],
   "status": "IN_PROGRESS",
-  "updated_at": "2026-08-20 17:18:36"
+  "updated_at": "2026-08-20 19:00:18"
 }
