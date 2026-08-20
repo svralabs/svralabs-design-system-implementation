@@ -4,18 +4,18 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import ButtonShowcaseWebView from './pages/ButtonShowcaseWebView';
+import OnboardingStepsWebViewFixedTokens from './pages/OnboardingStepsWebViewFixedTokens';
 import OnboardingStepsWidget from './pages/OnboardingStepsWidget';
 import ButtonShowcaseMobile from './pages/ButtonShowcaseMobile';
-import OnboardingWebViewFixedTokens from './pages/OnboardingWebViewFixedTokens';
+import ButtonShowcaseWebViewFinal from './pages/ButtonShowcaseWebViewFinal';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
-    { path: '/', label: 'ButtonShowcaseWebView' },
+    { path: '/', label: 'OnboardingStepsWebViewFixedTokens' },
     { path: '/onboardingstepswidget', label: 'OnboardingStepsWidget' },
     { path: '/buttonshowcasemobile', label: 'ButtonShowcaseMobile' },
-    { path: '/onboardingwebviewfixedtokens', label: 'OnboardingWebViewFixedTokens' }
+    { path: '/buttonshowcasewebviewfinal', label: 'ButtonShowcaseWebViewFinal' }
   ];
 
   return (
@@ -51,11 +51,11 @@ export default function App() {
               <ScreenBar />
               <div className="pt-10 min-h-screen">
                 <Routes>
-                  <Route path='/' element={<ButtonShowcaseWebView />} />
+                  <Route path='/' element={<OnboardingStepsWebViewFixedTokens />} />
         <Route path='/onboardingstepswidget' element={<OnboardingStepsWidget />} />
         <Route path='/buttonshowcasemobile' element={<ButtonShowcaseMobile />} />
-        <Route path='/onboardingwebviewfixedtokens' element={<OnboardingWebViewFixedTokens />} />
-                  <Route path="*" element={<ButtonShowcaseWebView />} />
+        <Route path='/buttonshowcasewebviewfinal' element={<ButtonShowcaseWebViewFinal />} />
+                  <Route path="*" element={<OnboardingStepsWebViewFixedTokens />} />
                 </Routes>
               </div>
             </BrowserRouter>

@@ -1,52 +1,33 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 
-/**
- * Button component
- * @param {Object} props - Component props
- * @param {string} props.variant - Button variant (primary, secondary, outline, text)
- * @param {string} props.size - Button size (sm, md, lg)
- * @param {boolean} props.disabled - Disabled state
- * @param {React.ReactNode} props.children - Button content
- * @param {function} props.onClick - Click handler
- * @returns {JSX.Element} Button component
- */
-export default function Button({
-  variant = 'primary',
-  size = 'md',
-  disabled = false,
-  children,
-  onClick,
-}) {
-  const baseClasses = 'font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2';
+const Button = ({ variant, size, children, disabled, loading, icon }) => {
+  const baseClasses = 'rounded-full border-2 border-on-surface hard-shadow-sm neubrutal-hover font-label uppercase transition-all';
   const variantClasses = {
-    primary: 'bg-primary text-white hover:bg-primary-hover',
-    secondary: 'bg-secondary text-white hover:bg-secondary-hover',
-    outline: 'border border-border text-text-primary hover:bg-surface',
-    text: 'text-text-primary hover:bg-surface',
+    primary: 'bg-primary-container text-on-primary-container',
+    secondary: 'bg-surface-bright text-on-surface',
+    ghost: 'bg-transparent text-on-surface border-transparent hover:border-on-surface',
+    disabled: 'bg-disabled text-disabled-content border-disabled',
   };
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
+    large: 'px-12 py-6',
+    medium: 'px-8 py-4',
+    small: 'px-6 py-2',
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 
   return (
-    <button
-      className={classes}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
+    <button className={classes} disabled={disabled || loading}>
+      {loading ? (
+        <span className="material-symbols-outlined animate-spin">progress_activity</span>
+      ) : (
+        <>
+          {icon && <span className="material-symbols-outlined mr-2">{icon}</span>}
+          {children}
+        </>
+      )}
     </button>
   );
-}
-
-Button.propTypes = {
-  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'text']),
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
-  disabled: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
 };
+
+export default Button;
