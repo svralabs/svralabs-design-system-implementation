@@ -20,7 +20,7 @@ const ButtonShowcaseWebView = () => {
       </header>
 
       <main className={styles.main}>
-        <section className={styles.hero}>
+        <section className={styles.heroSection}>
           <div className={styles.heroContent}>
             <div className={styles.badge}>Core Design Pillar</div>
             <h2>THE INTERACTION LANGUAGE</h2>
@@ -33,17 +33,18 @@ const ButtonShowcaseWebView = () => {
             </div>
           </div>
           <div className={styles.heroVisual}>
+            <div className={styles.visualOverlay}></div>
             <div className={styles.visualGrid}>
-              <div className={styles.gridItem}>
+              <div className={styles.visualCard}>
                 <span className="material-symbols-outlined">touch_app</span>
               </div>
-              <div className={styles.gridItem}>
+              <div className={styles.visualCard}>
                 <span className="material-symbols-outlined">mouse</span>
               </div>
-              <div className={styles.gridItem}>
+              <div className={styles.visualCard}>
                 <span className="material-symbols-outlined">ads_click</span>
               </div>
-              <div className={styles.gridItem}>
+              <div className={styles.visualCard}>
                 <span className="material-symbols-outlined">gesture</span>
               </div>
             </div>
@@ -67,7 +68,7 @@ const ButtonShowcaseWebView = () => {
                 </div>
                 <div className={styles.variantItem}>
                   <span>Ghost</span>
-                  <Button variant="tertiary">Ghost</Button>
+                  <Button variant="ghost">Ghost</Button>
                   <p>Low emphasis for auxiliary items.</p>
                 </div>
               </div>
@@ -97,16 +98,46 @@ const ButtonShowcaseWebView = () => {
               <h3>Icon Profiles</h3>
               <div className={styles.iconGrid}>
                 <div className={styles.iconItem}>
-                  <Button variant="primary" icon="touch_app">Touch</Button>
+                  <Button variant="primary" size="small">
+                    <span className="material-symbols-outlined">add</span>
+                  </Button>
+                  <span>Create</span>
                 </div>
                 <div className={styles.iconItem}>
-                  <Button variant="secondary" icon="mouse">Mouse</Button>
+                  <Button variant="secondary" size="small">
+                    <span className="material-symbols-outlined">edit</span>
+                  </Button>
+                  <span>Edit</span>
                 </div>
                 <div className={styles.iconItem}>
-                  <Button variant="tertiary" icon="ads_click">Click</Button>
+                  <Button variant="danger" size="small">
+                    <span className="material-symbols-outlined">delete</span>
+                  </Button>
+                  <span>Delete</span>
                 </div>
                 <div className={styles.iconItem}>
-                  <Button variant="primary" icon="gesture" disabled>Disabled</Button>
+                  <Button variant="ghost" size="small">
+                    <span className="material-symbols-outlined">info</span>
+                  </Button>
+                  <span>Info</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.card}>
+              <h3>Status</h3>
+              <div className={styles.statusGrid}>
+                <div className={styles.statusItem}>
+                  <Button variant="primary" disabled>Disabled</Button>
+                  <span>Inactive state</span>
+                </div>
+                <div className={styles.statusItem}>
+                  <Button variant="primary" size="medium">Loading</Button>
+                  <span>Processing state</span>
+                </div>
+                <div className={styles.statusItem}>
+                  <Button variant="primary" size="medium">Success</Button>
+                  <span>Completed state</span>
                 </div>
               </div>
             </div>

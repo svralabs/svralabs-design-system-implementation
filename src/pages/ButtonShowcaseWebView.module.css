@@ -1,31 +1,6 @@
-:root {
-  --color-primary: #6750a4;
-  --color-primary-container: #eaddff;
-  --color-on-primary-container: #21005d;
-  --color-surface: #fef7ff;
-  --color-surface-bright: #fef7ff;
-  --color-surface-2: #f3edf7;
-  --color-on-surface: #1c1b1f;
-  --color-background: #fffbfe;
-  --color-primary-fixed: #6750a4;
-  --color-secondary: #5f6368;
-  --color-on-primary: #ffffff;
-  --font-display: 'Roboto', sans-serif;
-  --font-headline-md: 'Roboto', sans-serif;
-  --font-label: 'Roboto', sans-serif;
-  --font-body-lg: 'Roboto', sans-serif;
-  --font-body: 'Roboto', sans-serif;
-  --text-display: 3.5rem;
-  --text-headline-md: 1.25rem;
-  --text-body-lg: 1.25rem;
-  --text-body: 1rem;
-  --text-caption: 0.75rem;
-  --margin: 1rem;
-}
-
 .container {
   font-family: var(--font-body);
-  color: var(--color-on-surface);
+  color: var(--on-surface);
 }
 
 .header {
@@ -37,23 +12,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--margin) calc(var(--margin) * 2);
-  background-color: var(--color-background);
-  border-bottom: 2px solid var(--color-on-surface);
+  padding: 1rem var(--margin);
+  background-color: var(--background);
+  border-bottom: 2px solid var(--on-surface);
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
 
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: var(--margin);
+  gap: 1rem;
 }
 
 .headerLeft h1 {
   font-family: var(--font-display);
-  font-size: var(--text-display);
+  font-size: var(--display);
   text-transform: uppercase;
-  color: var(--color-on-surface);
+  color: var(--on-surface);
 }
 
 .nav {
@@ -62,31 +37,30 @@
 
 .nav a {
   font-family: var(--font-label);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   font-weight: 500;
-  color: var(--color-secondary);
-  transition: color 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  color: var(--secondary);
 }
 
 .nav a:hover {
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 .main {
   margin-top: 6rem;
   margin-bottom: 8rem;
-  max-width: 72rem;
+  max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
   padding: 0 var(--margin);
 }
 
-.hero {
+.heroSection {
   margin-bottom: 3rem;
   border-radius: 0.75rem;
-  background-color: var(--color-primary-container);
-  border: 2px solid var(--color-on-surface);
+  background-color: var(--primary-container);
+  border: 2px solid var(--on-surface);
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   padding: var(--margin);
   display: flex;
@@ -104,33 +78,33 @@
 
 .badge {
   display: inline-block;
-  background-color: var(--color-on-surface);
-  color: var(--color-primary-fixed);
+  background-color: var(--on-surface);
+  color: var(--primary-fixed);
   padding: 0.25rem 1rem;
   border-radius: 9999px;
-  border: 2px solid var(--color-on-surface);
+  border: 2px solid var(--on-surface);
   font-family: var(--font-label);
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: var(--text-caption);
+  font-size: var(--caption);
 }
 
 .heroContent h2 {
   font-family: var(--font-display);
-  font-size: var(--text-display);
-  color: var(--color-on-primary-container);
-  line-height: 1.2;
+  font-size: var(--display);
+  color: var(--on-primary-container);
+  line-height: 1.1;
 }
 
 .heroContent p {
   font-family: var(--font-body-lg);
-  color: var(--color-on-primary-container);
+  color: var(--on-primary-container);
   max-width: 32rem;
 }
 
 .heroButtons {
   display: flex;
-  gap: var(--margin);
+  gap: 1rem;
 }
 
 .heroVisual {
@@ -140,28 +114,36 @@
   width: 100%;
 }
 
-.visualGrid {
+.visualOverlay {
   position: absolute;
   inset: 0;
+  background-color: var(--primary);
+  opacity: 0.1;
+  border-radius: 0.5rem;
+  border: 2px dashed var(--on-surface);
+}
+
+.visualGrid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--margin);
-  padding: var(--margin);
+  gap: 1rem;
+  padding: 1rem;
   height: 100%;
 }
 
-.gridItem {
+.visualCard {
   background-color: white;
-  border: 2px solid var(--color-on-surface);
-  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  border: 2px solid var(--on-surface);
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease;
 }
 
-.gridItem:hover {
+.visualCard:hover {
   transform: rotate(0);
 }
 
@@ -172,14 +154,14 @@
 }
 
 .variantsSection {
-  display: flex;
-  flex-direction: column;
+  grid-column: span 2;
+  display: grid;
   gap: 2rem;
 }
 
 .card {
-  background-color: var(--color-surface);
-  border: 2px solid var(--color-on-surface);
+  background-color: var(--surface);
+  border: 2px solid var(--on-surface);
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   padding: 2rem;
   border-radius: 0.75rem;
@@ -187,10 +169,10 @@
 
 .card h3 {
   font-family: var(--font-headline-md);
-  font-size: var(--text-headline-md);
+  font-size: var(--headline-md);
   text-transform: uppercase;
   margin-bottom: 2rem;
-  border-bottom: 2px solid var(--color-on-surface);
+  border-bottom: 2px solid var(--on-surface);
   padding-bottom: 1rem;
 }
 
@@ -209,12 +191,12 @@
 .variantItem span {
   font-family: var(--font-label);
   text-transform: uppercase;
-  color: var(--color-secondary);
+  color: var(--secondary);
 }
 
 .variantItem p {
-  font-size: var(--text-caption);
-  color: var(--color-secondary);
+  font-size: var(--caption);
+  color: var(--secondary);
 }
 
 .dimensionsContainer {
@@ -234,12 +216,11 @@
 .dimensionItem span {
   font-family: var(--font-label);
   text-transform: uppercase;
-  font-size: var(--text-caption);
+  font-size: var(--caption);
 }
 
 .sidebar {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
 }
 
@@ -252,7 +233,33 @@
 .iconItem {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.iconItem span {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  font-size: var(--caption);
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusItem span {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  font-size: var(--caption);
 }
 
 @media (min-width: 768px) {
@@ -262,7 +269,7 @@
     gap: 2rem;
   }
 
-  .hero {
+  .heroSection {
     flex-direction: row;
   }
 
@@ -274,7 +281,7 @@
     grid-template-columns: 2fr 1fr;
   }
 
-  .variantsGrid {
-    grid-template-columns: repeat(3, 1fr);
+  .variantsSection {
+    grid-column: span 2;
   }
 }
