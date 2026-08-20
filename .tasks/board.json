@@ -1,0 +1,130 @@
+{
+  "project_name": "svralabs-design-system-implementation",
+  "architecture_summary": "Modular React app. Pages in src/pages/. Reusable components in src/components/. CSS modules for styling. React Router v6 for navigation. No state management lib (use React context for global state).",
+  "tickets": [
+    {
+      "id": "TASK-001",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Onboarding steps widget page (src/pages/OnboardingStepsWidget.jsx)",
+      "source_screen": "onboarding_steps_widget",
+      "description": "Convert Stitch onboarding_steps_widget screen to React. Extract reusable StepIndicator component. Use CSS modules for styling. Match design pixel-perfect.",
+      "target_files": [
+        "src/pages/OnboardingStepsWidget.jsx",
+        "src/components/StepIndicator.jsx",
+        "src/pages/OnboardingStepsWidget.module.css"
+      ],
+      "acceptance_criteria": [
+        "Page render without errors",
+        "StepIndicator component reusable, accept props: currentStep, totalSteps, labels",
+        "Styling match Stitch design (colors, spacing, typography)",
+        "Responsive behavior preserved"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-002",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Onboarding web view with fixed tokens page (src/pages/OnboardingWebView.jsx)",
+      "source_screen": "onboarding_steps_web_view_fixed_tokens",
+      "description": "Convert Stitch onboarding_steps_web_view_fixed_tokens screen. Extract TokenDisplay component. Use iframe for web view. CSS modules for styling.",
+      "target_files": [
+        "src/pages/OnboardingWebView.jsx",
+        "src/components/TokenDisplay.jsx",
+        "src/pages/OnboardingWebView.module.css"
+      ],
+      "acceptance_criteria": [
+        "Page render without errors",
+        "TokenDisplay component show fixed tokens (BTC, ETH, SOL) with correct icons, labels, values",
+        "Web view iframe load external URL (placeholder: https://svralabs.com/onboarding)",
+        "Styling match Stitch design"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-003",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Button showcase web view page (src/pages/ButtonShowcaseWebView.jsx)",
+      "source_screen": "button_showcase_web_view_final",
+      "description": "Convert Stitch button_showcase_web_view_final screen. Extract Button component with variants (primary, secondary, disabled, loading). CSS modules for styling.",
+      "target_files": [
+        "src/pages/ButtonShowcaseWebView.jsx",
+        "src/components/Button.jsx",
+        "src/components/Button.module.css"
+      ],
+      "acceptance_criteria": [
+        "Page render without errors",
+        "Button component support variants: primary, secondary, disabled, loading",
+        "Button states (hover, active, focus) match Stitch design",
+        "Showcase page display all button variants in correct layout"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-004",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Button showcase mobile page (src/pages/ButtonShowcaseMobile.jsx)",
+      "source_screen": "button_showcase_mobile",
+      "description": "Convert Stitch button_showcase_mobile screen. Reuse Button component from TASK-003. CSS modules for mobile-specific styling.",
+      "target_files": [
+        "src/pages/ButtonShowcaseMobile.jsx",
+        "src/pages/ButtonShowcaseMobile.module.css"
+      ],
+      "acceptance_criteria": [
+        "Page render without errors",
+        "Mobile layout match Stitch design (stacked buttons, spacing, typography)",
+        "Button component reused from TASK-003",
+        "Responsive behavior preserved"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-005",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Shared UI components and design tokens (src/components/, src/styles/)",
+      "source_screen": "",
+      "description": "Extract shared design tokens (colors, spacing, typography). Create shared UI components: Card, Modal. CSS variables for theming. No duplication.",
+      "target_files": [
+        "src/styles/tokens.css",
+        "src/components/Card.jsx",
+        "src/components/Card.module.css",
+        "src/components/Modal.jsx",
+        "src/components/Modal.module.css"
+      ],
+      "acceptance_criteria": [
+        "Design tokens defined as CSS variables in tokens.css",
+        "Card component reusable, accept props: children, padding, shadow",
+        "Modal component reusable, accept props: isOpen, onClose, children",
+        "Components used in at least two pages"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-006",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "source_screen": "",
+      "description": "Create app shell. Navigation bar with links to all pages. React Router v6 setup. 404 page. Layout consistent across pages.",
+      "target_files": [
+        "src/App.jsx",
+        "src/components/NavBar.jsx",
+        "src/components/NavBar.module.css",
+        "src/pages/NotFound.jsx"
+      ],
+      "acceptance_criteria": [
+        "App render without errors",
+        "Navigation bar show links to all pages (OnboardingStepsWidget, OnboardingWebView, ButtonShowcaseWebView, ButtonShowcaseMobile)",
+        "Router handle 404 with NotFound page",
+        "Layout consistent (header, footer, main content area)"
+      ],
+      "status": "DONE"
+    }
+  ],
+  "status": "IN_PROGRESS",
+  "updated_at": "2026-08-20 11:35:28"
+}

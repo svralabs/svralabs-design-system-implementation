@@ -1,21 +1,64 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ButtonShowcaseWebViewFinal from './pages/ButtonShowcaseWebViewFinal';
-import OnboardingStepsWebViewFixedTokens from './pages/OnboardingStepsWebViewFixedTokens';
-import OnboardingStepsWidget from './pages/OnboardingStepsWidget';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
+import ErrorBoundary from './components/ErrorBoundary';
+import ButtonShowcaseWebView from './pages/ButtonShowcaseWebView';
 import ButtonShowcaseMobile from './pages/ButtonShowcaseMobile';
+import OnboardingWebView from './pages/OnboardingWebView';
+
+function ScreenBar() {
+  const loc = useLocation();
+  const navs = [
+    { path: '/', label: 'ButtonShowcaseWebView' },
+    { path: '/buttonshowcasemobile', label: 'ButtonShowcaseMobile' },
+    { path: '/onboardingwebview', label: 'OnboardingWebView' }
+  ];
+
+  return (
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 backdrop-blur-md border border-slate-700/60 rounded-full px-3 py-1.5 shadow-2xl flex items-center gap-1.5 overflow-x-auto max-w-[95vw]">
+      <span className="text-[10px] font-bold text-violet-400 uppercase tracking-widest px-2 hidden sm:inline">Screens:</span>
+      {navs.map((n) => {
+        const active = loc.pathname === n.path;
+        return (
+          <Link
+            key={n.path}
+            to={n.path}
+            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all whitespace-nowrap ${
+              active
+                ? 'bg-violet-600 text-white shadow-md shadow-violet-500/30'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            {n.label}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<ButtonShowcaseWebViewFinal />} />
-<Route path='/button-showcase-web-view-final' element={<ButtonShowcaseWebViewFinal />} />
-<Route path='/onboarding-steps-web-view-fixed-tokens' element={<OnboardingStepsWebViewFixedTokens />} />
-<Route path='/onboarding-steps-widget' element={<OnboardingStepsWidget />} />
-<Route path='/button-showcase-mobile' element={<ButtonShowcaseMobile />} />
-        <Route path="*" element={<ButtonShowcaseWebViewFinal />} />
-      </Routes>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <AuthProvider>
+        <CartProvider>
+          <ThemeProvider>
+            <BrowserRouter>
+              <ScreenBar />
+              <div className="pt-10 min-h-screen">
+                <Routes>
+                  <Route path='/' element={<ButtonShowcaseWebView />} />
+        <Route path='/buttonshowcasemobile' element={<ButtonShowcaseMobile />} />
+        <Route path='/onboardingwebview' element={<OnboardingWebView />} />
+                  <Route path="*" element={<ButtonShowcaseWebView />} />
+                </Routes>
+              </div>
+            </BrowserRouter>
+          </ThemeProvider>
+        </CartProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }

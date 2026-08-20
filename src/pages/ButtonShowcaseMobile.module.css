@@ -1,0 +1,252 @@
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-top: 8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-bottom: 2px solid #000000;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iconButton:hover {
+  transform: translate(2px, 2px);
+}
+
+.headerTitle {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: -0.05em;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heroCard {
+  background-color: #e9f5db;
+  padding: 1.5rem;
+  border: 2px solid #000000;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.heroTitle {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.heroText {
+  font-family: 'Neue Haas Grotesk Text Pro', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #000000;
+  max-width: 42rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sectionNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a3d741;
+  color: #ffffff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 2px solid #000000;
+  font-weight: 700;
+}
+
+.sectionTitle {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border: 2px solid #000000;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.label {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-bottom: 1.5rem;
+  color: #6b7280;
+}
+
+.button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.description {
+  margin-top: 1rem;
+  font-family: 'Neue Haas Grotesk Text Pro', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-style: italic;
+}
+
+.sizeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 3rem;
+  background-color: #e5e5e5;
+  border: 2px solid #000000;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.sizeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sizeLabel {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6b7280;
+}
+
+.functionalGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.functionalButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.iconCard {
+  background-color: #f5f5f5;
+  border: 2px solid #000000;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconLabel {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .functionalGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .iconGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
