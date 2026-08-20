@@ -1,20 +1,11 @@
-const theme = require('./src/theme');
-
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: theme.colors,
-      spacing: theme.spacing,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.fontSize,
-      fontWeight: theme.typography.fontWeight,
-      lineHeight: theme.typography.lineHeight,
-      letterSpacing: theme.typography.letterSpacing,
-      screens: theme.screens,
-    },
+    extend: {},
   },
   plugins: [],
-};
+}
