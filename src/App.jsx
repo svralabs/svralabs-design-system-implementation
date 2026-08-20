@@ -5,15 +5,17 @@ import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ButtonShowcaseWebView from './pages/ButtonShowcaseWebView';
+import OnboardingStepsWidget from './pages/OnboardingStepsWidget';
 import ButtonShowcaseMobile from './pages/ButtonShowcaseMobile';
-import OnboardingWebView from './pages/OnboardingWebView';
+import OnboardingWebViewFixedTokens from './pages/OnboardingWebViewFixedTokens';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
     { path: '/', label: 'ButtonShowcaseWebView' },
+    { path: '/onboardingstepswidget', label: 'OnboardingStepsWidget' },
     { path: '/buttonshowcasemobile', label: 'ButtonShowcaseMobile' },
-    { path: '/onboardingwebview', label: 'OnboardingWebView' }
+    { path: '/onboardingwebviewfixedtokens', label: 'OnboardingWebViewFixedTokens' }
   ];
 
   return (
@@ -50,8 +52,9 @@ export default function App() {
               <div className="pt-10 min-h-screen">
                 <Routes>
                   <Route path='/' element={<ButtonShowcaseWebView />} />
+        <Route path='/onboardingstepswidget' element={<OnboardingStepsWidget />} />
         <Route path='/buttonshowcasemobile' element={<ButtonShowcaseMobile />} />
-        <Route path='/onboardingwebview' element={<OnboardingWebView />} />
+        <Route path='/onboardingwebviewfixedtokens' element={<OnboardingWebViewFixedTokens />} />
                   <Route path="*" element={<ButtonShowcaseWebView />} />
                 </Routes>
               </div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Card.module.css';
-
-export default function Card({ children, padding = 'md', shadow = 'md' }) {
+export default function Card({ children, className = '', title, subtitle, ...props }) {
   return (
-    <div className={`${styles.card} ${styles[`padding-${padding}`]} ${styles[`shadow-${shadow}`]}`}>
+    <div className={`bg-white dark:bg-[#1e1e24] rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 ${className}`} {...props}>
+      {title && <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-1">{title}</h3>}
+      {subtitle && <p className="text-sm text-slate-500 mb-4">{subtitle}</p>}
       {children}
     </div>
   );

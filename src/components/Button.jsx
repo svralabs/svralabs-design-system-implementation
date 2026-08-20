@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-const Button = ({ variant = 'primary', disabled = false, loading = false, children, ...props }) => {
-  const buttonClass = `${styles.button} ${styles[variant]}`;
+const Button = ({ variant = 'primary', size = 'medium', disabled = false, children, icon, ...props }) => {
+  const buttonClass = `${styles.button} ${styles[variant]} ${styles[size]} ${disabled ? styles.disabled : ''}`;
 
   return (
-    <button className={buttonClass} disabled={disabled || loading} {...props}>
-      {loading && <span className={styles.spinner} />}
+    <button className={buttonClass} disabled={disabled} {...props}>
+      {icon && <span className="material-symbols-outlined">{icon}</span>}
       {children}
     </button>
   );

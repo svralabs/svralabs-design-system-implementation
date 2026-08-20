@@ -5,123 +5,72 @@ import styles from './ButtonShowcaseMobile.module.css';
 const buttonVariants = [
   {
     label: 'PRIMARY (LIME)',
-    description: 'Used for main calls to action.',
-    props: {
-      variant: 'primary',
-      children: 'Confirm Action',
-      className: styles.button
-    }
+    text: 'Confirm Action',
+    variant: 'primary',
+    description: 'Used for main calls to action.'
   },
   {
     label: 'SECONDARY (WHITE)',
-    description: 'Used for alternative options.',
-    props: {
-      variant: 'secondary',
-      children: 'Cancel Action',
-      className: styles.button
-    }
+    text: 'Cancel Action',
+    variant: 'secondary',
+    description: 'Used for alternative options.'
   },
   {
     label: 'GHOST (OUTLINE)',
-    description: 'Low emphasis tertiary actions.',
-    props: {
-      variant: 'ghost',
-      children: 'Learn More',
-      className: styles.button
-    }
+    text: 'Learn More',
+    variant: 'ghost',
+    description: 'Low emphasis tertiary actions.'
   }
 ];
 
 const buttonSizes = [
   {
-    label: 'Large Button',
-    size: 'HEIGHT: 64PX',
-    props: {
-      variant: 'primary',
-      size: 'large',
-      children: 'Large Button',
-      className: styles.button
-    }
+    text: 'Large Button',
+    size: 'large',
+    height: 'HEIGHT: 64PX'
   },
   {
-    label: 'Medium Button',
-    size: 'HEIGHT: 48PX',
-    props: {
-      variant: 'primary',
-      size: 'medium',
-      children: 'Medium Button',
-      className: styles.button
-    }
+    text: 'Medium Button',
+    size: 'medium',
+    height: 'HEIGHT: 48PX'
   },
   {
-    label: 'Small Button',
-    size: 'HEIGHT: 32PX',
-    props: {
-      variant: 'primary',
-      size: 'small',
-      children: 'Small Button',
-      className: styles.button
-    }
+    text: 'Small Button',
+    size: 'small',
+    height: 'HEIGHT: 32PX'
   }
 ];
 
 const functionalColors = [
   {
-    label: 'Success',
-    icon: 'check_circle',
-    props: {
-      variant: 'success',
-      children: 'Success',
-      icon: 'check_circle',
-      className: styles.functionalButton
-    }
+    text: 'Success',
+    color: 'success',
+    icon: 'check_circle'
   },
   {
-    label: 'Warning',
-    icon: 'warning',
-    props: {
-      variant: 'warning',
-      children: 'Warning',
-      icon: 'warning',
-      className: styles.functionalButton
-    }
+    text: 'Warning',
+    color: 'warning',
+    icon: 'warning'
   },
   {
-    label: 'Error Action',
-    icon: 'delete_forever',
-    props: {
-      variant: 'error',
-      children: 'Error Action',
-      icon: 'delete_forever',
-      className: styles.functionalButton
-    }
+    text: 'Error Action',
+    color: 'error',
+    icon: 'delete_forever'
   }
 ];
 
 const iconButtons = [
   {
     icon: 'add',
-    props: {
-      variant: 'icon',
-      icon: 'add',
-      className: styles.iconButton
-    }
+    color: 'primary-container'
   },
   {
     icon: 'settings',
-    props: {
-      variant: 'icon',
-      icon: 'settings',
-      className: styles.iconButton
-    }
+    color: 'surface-container-lowest'
   },
   {
-    icon: 'delete_forever',
-    props: {
-      variant: 'icon',
-      icon: 'delete_forever',
-      className: styles.iconButton
-    }
+    icon: 'favorite',
+    color: 'error-container'
   }
 ];
 
@@ -129,23 +78,24 @@ export default function ButtonShowcaseMobile() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <div className={styles.headerLeft}>
-          <button className={styles.iconButton}>
-            <span className="material-symbols-outlined">arrow_back</span>
+        <div className="flex items-center gap-4">
+          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+            arrow_back
           </button>
           <h1 className={styles.headerTitle}>BUTTONS</h1>
         </div>
-        <div className={styles.headerRight}>
-          <button className={styles.iconButton}>
-            <span className="material-symbols-outlined">settings</span>
+        <div className="flex items-center">
+          <button className="material-symbols-outlined text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+            settings
           </button>
         </div>
       </header>
-      <main className={styles.main}>
-        <section className={styles.heroSection}>
-          <div className={styles.heroCard}>
-            <h2 className={styles.heroTitle}>The Interaction Language</h2>
-            <p className={styles.heroText}>
+
+      <main>
+        <section className={styles.section}>
+          <div className={styles.card}>
+            <h2 className="font-headline-lg text-headline-lg uppercase mb-4">The Interaction Language</h2>
+            <p className="font-body-lg text-body-lg text-on-primary-container max-w-2xl">
               Our buttons are built to feel tactile, physical, and immediate. Using high-contrast borders and solid shadows, they anchor the UI in a cardboard-like physical space.
             </p>
           </div>
@@ -156,12 +106,16 @@ export default function ButtonShowcaseMobile() {
             <div className={styles.sectionNumber}>1</div>
             <h3 className={styles.sectionTitle}>Button Variants</h3>
           </div>
-          <div className={styles.grid}>
+          <div className={styles.buttonGrid}>
             {buttonVariants.map((variant, index) => (
               <div key={index} className={styles.card}>
-                <p className={styles.label}>{variant.label}</p>
-                <Button {...variant.props} />
-                <p className={styles.description}>{variant.description}</p>
+                <p className={styles.cardTitle}>{variant.label}</p>
+                <Button
+                  text={variant.text}
+                  variant={variant.variant}
+                  className="w-full"
+                />
+                <p className={styles.buttonDescription}>{variant.description}</p>
               </div>
             ))}
           </div>
@@ -175,8 +129,12 @@ export default function ButtonShowcaseMobile() {
           <div className={styles.sizeContainer}>
             {buttonSizes.map((size, index) => (
               <div key={index} className={styles.sizeItem}>
-                <Button {...size.props} />
-                <span className={styles.sizeLabel}>{size.size}</span>
+                <Button
+                  text={size.text}
+                  size={size.size}
+                  variant="primary"
+                />
+                <span className={styles.sizeLabel}>{size.height}</span>
               </div>
             ))}
           </div>
@@ -187,9 +145,15 @@ export default function ButtonShowcaseMobile() {
             <div className={styles.sectionNumber}>3</div>
             <h3 className={styles.sectionTitle}>Functional Colors</h3>
           </div>
-          <div className={styles.functionalGrid}>
+          <div className={styles.buttonGrid}>
             {functionalColors.map((color, index) => (
-              <Button key={index} {...color.props} />
+              <Button
+                key={index}
+                text={color.text}
+                color={color.color}
+                icon={color.icon}
+                className="w-full"
+              />
             ))}
           </div>
         </section>
@@ -199,12 +163,18 @@ export default function ButtonShowcaseMobile() {
             <div className={styles.sectionNumber}>4</div>
             <h3 className={styles.sectionTitle}>Icon Buttons</h3>
           </div>
-          <div className={styles.iconGrid}>
-            <div className={styles.iconCard}>
-              <p className={styles.iconLabel}>Circular Profiles</p>
-              <div className={styles.iconContainer}>
+          <div className={styles.iconButtonGrid}>
+            <div className={styles.iconButtonContainer}>
+              <p className={styles.iconButtonTitle}>Circular Profiles</p>
+              <div className={styles.iconButtonGroup}>
                 {iconButtons.map((button, index) => (
-                  <Button key={index} {...button.props} />
+                  <Button
+                    key={index}
+                    icon={button.icon}
+                    color={button.color}
+                    circular
+                    size="large"
+                  />
                 ))}
               </div>
             </div>
